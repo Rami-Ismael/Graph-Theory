@@ -1,0 +1,34 @@
+            static Stack<Integer> stack;
+            static BitSet onStack;
+           static int [] ids;
+          static int []low;
+            static id   =0;
+            sccCount = 0;
+            onStack = new BitSet(N+1);
+            stack = new Stack<>();
+ 
+ private static void dfs(int at) {
+        stack.push(at);
+        onStack.set(at,true);
+        ids[at] = low[at] = id++;
+        //visit all neighbours & min low-link on the callback
+        for (int i=0;i<graph[at].size();i++){
+            int to = graph[at].get(i);
+            if (ids[to]==-1)dfs(to);
+            if (onStack.get(to)) low[at] = Math.min(low[at],low[to]);
+        }
+        //after having vistedf all the nieghbours of at
+        //if we're at the start of a SCC empty the seen
+        //stack untli werre baclk to the start of the SCC.
+        if (ids[at]==low[at]) {
+            int node =0;
+           while (true){
+               int v = stack.pop();
+               onStack.set(v,false);
+               if (at==v)
+                   break;
+           }
+            sccCount++;
+        }
+
+    }
