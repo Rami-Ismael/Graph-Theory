@@ -1,0 +1,19 @@
+private static void dfs(int at, int parent, ArrayList<IntegerPair> bridges) {
+        visited[at] = true;
+        lowLinked[at] = ids[at]=id++;
+        //for each edge from node at to not to
+        for (int i=0;i<graph[at].size();++i){
+            int to = graph[at].get(i);
+            if (to==parent)continue;
+            if (!visited[to]){
+                dfs(to,at,bridges);
+                //backward going
+                lowLinked[at] = Math.min(lowLinked[at],lowLinked[to]);
+                if (ids[at]<lowLinked[to]){
+                    bridges.add(new IntegerPair(Math.min(at,to),Math.max(at,to)));
+                }
+            }else
+                //visted already node change the low link value
+                lowLinked[at] = Math.min(lowLinked[at],ids[to]);
+        }
+    }
