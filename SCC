@@ -1,11 +1,9 @@
-            static Stack<Integer> stack;
-            static BitSet onStack;
-           static int [] ids;
-          static int []low;
-            static id   =0;
-            sccCount = 0;
-            onStack = new BitSet(N+1);
-            stack = new Stack<>();
+           static Stack<Integer> stack;
+    static BitSet onStack;
+    static int [] ids;
+    static int []low;
+    static int id   =0;
+    int sccCount = 0;
  
  private static void dfs(int at) {
         stack.push(at);
